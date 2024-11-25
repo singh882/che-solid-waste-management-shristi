@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Plant Creator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to the Plant Garden</h1>
+    <div id="plantContainer"></div>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #e0f7fa;
+    }
+    
+    #plantContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .plant {
+        width: 20px;
+        height: 100px;
+        background-color: #4caf50; /* Stem color */
+        position: relative;
+        margin: 10px;
+    }
+    
+    .leaf {
+        width: 15px;
+        height: 10px;
+        background-color: #81c784; /* Leaf color */
+        border-radius: 10px;
+        position: absolute;
+    }
+    
+    .leaf.left {
+        top: 20px;
+        left: -10px;
+        transform: rotate(30deg);
+    }
+    
+    .leaf.right {
+        top: 20px;
+        right: -10px;
+        transform: rotate(-30deg);
+    }
+
+    <script src="script.js"></script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const plantContainer = document.getElementById('plantContainer');
+    
+        // Function to create a plant
+        function createPlant() {
+            const plant = document.createElement('div');
+            plant.classList.add('plant');
+    
+            // Create leaves
+            const leftLeaf = document.createElement('div');
+            leftLeaf.classList.add('leaf', 'left');
+    
+            const rightLeaf = document.createElement('div');
+            rightLeaf.classList.add('leaf', 'right');
+    
+            // Append leaves to the plant
+            plant.appendChild(leftLeaf);
+            plant.appendChild(rightLeaf);
+    
+            // Append plant to the container
+            plantContainer.appendChild(plant);
+        }
+    
+        // Automatically create plants
+        for (let i = 0; i < 5; i++) {
+            createPlant();
+        }
+    });
+</body>
+</html>
